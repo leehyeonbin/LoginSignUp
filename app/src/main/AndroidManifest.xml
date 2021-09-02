@@ -13,7 +13,8 @@
         android:theme="@style/Theme.LoginSignUpFirebase">
         <activity android:name=".ProfileActivity"></activity>
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
