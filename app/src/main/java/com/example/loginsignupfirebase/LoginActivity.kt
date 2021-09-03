@@ -5,7 +5,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PatternMatcher
+import android.provider.ContactsContract
+import android.text.TextUtils
 import android.util.Patterns
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.example.loginsignupfirebase.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -66,8 +69,38 @@ class LoginActivity : AppCompatActivity() {
 
         // validate data
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-
+            // invalid email format
+            mbinding.emailEt.error = "Invalid email format"
         }
+        else if (TextUtils.isEmpty(password)){
+            // no password entered
+            mbinding.passwordEt.error = "Please enter password"
+        }
+        else {
+            // data is validated, begin login
+            firebaseLogin()
+        }
+    }
+
+    private fun firebaseLogin() {
+        progressDialog.show()
+        firebaseAuth.signInWithEmailAndPassword(email,password)
+            .addOnSuccessListener {
+            //login success
+                progressDialog.dismiss()
+                // get user info
+                val firebaseUser = firebaseAuth.currentUser
+                val email = firebaseUser!!.email
+        }
+            .addOnFailureListener { e->
+            //login failed
+                progressDialog.dismiss()
+                Toast.makeText(this, "Logged in at &${email}",Toast.LENGTH_SHORT).show()
+
+                // open profile
+                startActivity(Intent(this, ProfileActivity::class.java))
+                finish()
+            }
     }
 
     private fun cheakUser() {
