@@ -81,6 +81,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun firebaseLogin() {
+        // show progress
         progressDialog.show()
         firebaseAuth.signInWithEmailAndPassword(email,password)
             .addOnSuccessListener {
@@ -89,15 +90,15 @@ class LoginActivity : AppCompatActivity() {
                 // get user info
                 val firebaseUser = firebaseAuth.currentUser
                 val email = firebaseUser!!.email
-        }
-            .addOnFailureListener { e->
-            //login failed
-                progressDialog.dismiss()
-                Toast.makeText(this, "Logged in at &${email}",Toast.LENGTH_SHORT).show()
 
                 // open profile
                 startActivity(Intent(this, ProfileActivity::class.java))
                 finish()
+        }
+            .addOnFailureListener { e->
+            //login failed
+                progressDialog.dismiss()
+                Toast.makeText(this, "Logged in at &$email",Toast.LENGTH_SHORT).show()
             }
     }
 
