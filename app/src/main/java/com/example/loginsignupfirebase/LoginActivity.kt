@@ -92,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
                 val email = firebaseUser!!.email
 
                 // open profile
-                startActivity(Intent(this, ProfileActivity::class.java))
+                startActivity(Intent(this, MainActivity::class.java))
                 finish()
         }
             .addOnFailureListener { e->
@@ -108,7 +108,7 @@ class LoginActivity : AppCompatActivity() {
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser != null) {
             // user is already logged in
-            startActivity(Intent(this, ProfileActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
     }

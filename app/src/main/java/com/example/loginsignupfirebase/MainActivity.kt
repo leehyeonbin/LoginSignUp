@@ -7,7 +7,7 @@ import androidx.appcompat.app.ActionBar
 import com.example.loginsignupfirebase.databinding.ActivityProfileBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class ProfileActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     // ViewBinding
     private lateinit var mbinding : ActivityProfileBinding
