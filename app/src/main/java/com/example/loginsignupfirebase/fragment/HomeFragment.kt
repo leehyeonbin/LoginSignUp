@@ -17,6 +17,8 @@ class HomeFragment :Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         mbinding = FragmentHomeBinding.inflate(inflater, container, false)
+
+
         return mbinding?.root
 
 
