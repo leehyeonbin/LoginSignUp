@@ -42,9 +42,6 @@ class MainActivity : AppCompatActivity() {
         // navigation
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.my_host_nav) as NavHostFragment
 
-
-
-
         // navigation controller
         val navContolloer = navHostFragment.navController
 
@@ -55,8 +52,6 @@ class MainActivity : AppCompatActivity() {
         actionBar = supportActionBar!!
         actionBar.title = "Profile"
 
-
-        //---------- 디버깅 오류가 나는 지점 ----------------
         // init firebase auth
         firebaseAuth = FirebaseAuth.getInstance()
         profileFragment = ProfileFragment(firebaseAuth)

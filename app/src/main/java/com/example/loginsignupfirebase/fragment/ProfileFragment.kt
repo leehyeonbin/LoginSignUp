@@ -1,5 +1,6 @@
 package com.example.loginsignupfirebase.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import com.example.loginsignupfirebase.LoginActivity
 import com.example.loginsignupfirebase.databinding.FragmentProfileBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -32,6 +34,8 @@ class ProfileFragment(val firebaseAuth: FirebaseAuth?) :Fragment() {
         mbinding!!.logoutBtn.setOnClickListener {
             firebaseAuth?.signOut()
             requireActivity().finish()
+            val intent = Intent(getActivity(), LoginActivity::class.java)
+            startActivity(intent)
         }
 
         return mbinding?.root
