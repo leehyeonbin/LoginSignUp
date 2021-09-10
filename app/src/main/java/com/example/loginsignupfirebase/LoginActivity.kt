@@ -46,7 +46,7 @@ class LoginActivity : AppCompatActivity() {
 
         // init firebaseAuth
         firebaseAuth = FirebaseAuth.getInstance()
-//        cheakUser()
+        cheakUser()
 
         // handle click, open SignUpActivity
         mbinding.noAccountTv.setOnClickListener {
